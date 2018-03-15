@@ -1,12 +1,12 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 26
+    compileSdkVersion 27
     buildToolsVersion "26.0.2"
     defaultConfig {
         applicationId "com.aufthesis.characteridiom3"
         minSdkVersion 14
-        targetSdkVersion 26
+        targetSdkVersion 27
         versionCode 26
         versionName "1.5.6" // 2017/10/12 1.5.6
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
@@ -25,14 +25,14 @@ dependencies {
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
-    implementation 'com.android.support:appcompat-v7:26.1.0'
+    implementation 'com.android.support:appcompat-v7:27.1.0'
     testImplementation 'junit:junit:4.12'
 
-    implementation 'com.google.android.gms:play-services-analytics:11.4.2'
-    implementation 'com.google.firebase:firebase-core:11.4.2'  // analyticsを実装
-    implementation 'com.google.firebase:firebase-ads:11.4.2'
-    implementation 'com.google.firebase:firebase-appindexing:11.4.2'
-    implementation 'com.google.firebase:firebase-crash:11.4.2' // crashを実装
-    implementation 'com.google.firebase:firebase-messaging:11.4.2'
+    implementation 'com.google.android.gms:play-services-analytics:11.8.0'
+    implementation 'com.google.firebase:firebase-core:11.8.0'  // analyticsを実装
+    implementation 'com.google.firebase:firebase-ads:11.8.0'
+    implementation 'com.google.firebase:firebase-appindexing:11.8.0'
+    implementation 'com.google.firebase:firebase-crash:11.8.0' // crashを実装
+    implementation 'com.google.firebase:firebase-messaging:11.8.0'
 }
 apply plugin: 'com.google.gms.google-services'
