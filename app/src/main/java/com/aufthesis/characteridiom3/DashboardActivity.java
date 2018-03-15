@@ -1,5 +1,6 @@
 package com.aufthesis.characteridiom3;
 
+import android.app.Activity;
 import android.app.SearchManager;
 import android.content.Intent;
 import android.os.Bundle;
@@ -25,7 +26,7 @@ import java.util.List;
 import java.util.Map;
 
 // Created by yoichi75jp2 on 2016/10/26.
-public class DashboardActivity extends AppCompatActivity {
+public class DashboardActivity extends Activity {
 
     static public final List<Integer> m_listMax =
             new ArrayList<>(Arrays.asList(50,100,200,300,400,500,1000,2000,3000,4000,5000,10000));
@@ -38,9 +39,9 @@ public class DashboardActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dashboard);
 
-        android.support.v7.app.ActionBar actionBar = getSupportActionBar();
-        if(actionBar != null)
-            actionBar.setDisplayHomeAsUpEnabled(true);
+//        android.support.v7.app.ActionBar actionBar = getSupportActionBar();
+//        if(actionBar != null)
+//            actionBar.setDisplayHomeAsUpEnabled(true);
 
         TextView discText = findViewById(R.id.disc);
         TextView maxText = findViewById(R.id.max);

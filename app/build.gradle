@@ -5,9 +5,9 @@ android {
     buildToolsVersion "26.0.2"
     defaultConfig {
         applicationId "com.aufthesis.characteridiom3"
-        minSdkVersion 14
+        minSdkVersion 16
         targetSdkVersion 27
-        versionCode 26
+        versionCode 27
         versionName "1.5.7" // 2018/02/05 1.5.7
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
@@ -35,4 +35,4 @@ dependencies {
     implementation 'com.google.firebase:firebase-crash:11.8.0' // crashを実装
     implementation 'com.google.firebase:firebase-messaging:11.8.0'
 }
-apply plugin: 'com.google.gms.google-services'
+//apply plugin: 'com.google.gms.google-services'
