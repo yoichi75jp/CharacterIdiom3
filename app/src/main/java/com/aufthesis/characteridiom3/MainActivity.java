@@ -60,6 +60,8 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public class MainActivity extends Activity implements View.OnClickListener {
 
+    //debug時はこの値をtrueに設定
+    static public boolean g_isDebug = false;
     //private Context m_context = null;
 
     private Map<Integer, Button> m_mapButton = new ConcurrentHashMap<>();
@@ -80,13 +82,14 @@ public class MainActivity extends Activity implements View.OnClickListener {
     private AdView m_adView;
     private static InterstitialAd m_InterstitialAd;
 
-    //private Context m_context;
+    private Context m_context;
     //private DBOpenHelper m_DbHelper;
     private SQLiteDatabase m_db;
 
     private Integer m_correctCount;
 
-    private final int m_defaultColor = Color.parseColor("#E0FFFF"); // LightCyan
+    //private final int m_defaultColor = Color.parseColor("#E0FFFF"); // LightCyan
+    private final int m_defaultColor = Color.parseColor("#E0E0E0"); // Gray
     private final int m_onClickColor = Color.parseColor("#FFFFE0"); // LightYellow
     //private final int m_correctColor = Color.parseColor("#00FF00"); // Lime
 
@@ -116,7 +119,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        //m_context = this;
+        m_context = this;
 
         // Obtain the FirebaseAnalytics instance.
         //m_FirebaseAnalytics = FirebaseAnalytics.getInstance(this);
@@ -386,7 +389,8 @@ public class MainActivity extends Activity implements View.OnClickListener {
             public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
                 Map<String, String> conMap = (Map<String, String>)arg0.getItemAtPosition(arg2);
                 String idiom = conMap.get("idiom");
-                Intent intent = new Intent(Intent.ACTION_WEB_SEARCH);
+                //Intent intent = new Intent(Intent.ACTION_WEB_SEARCH);
+                Intent intent = new Intent(m_context, WebBrowserActivity.class);
                 intent.putExtra(SearchManager.QUERY, getString(R.string.search_word, idiom));
                 startActivity(intent);
             }

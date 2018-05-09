@@ -21,7 +21,7 @@ import java.util.zip.ZipInputStream;
 // Created by yoichi75jp2 on 2016/10/19.
 public class DBOpenHelper extends SQLiteOpenHelper
 {
-    static private int DB_VERSION = 2;  //2016/10/30 start
+    static private int DB_VERSION = 3;  //2018/05/09 ver.3
     final static private String DB_NAME = "CharacterIdiom";
     final static private String DB_NAME_ASSET = "CharacterIdiom.db";
     final static private String DB_NAME_ZIP = "CharacterIdiom.zip";
