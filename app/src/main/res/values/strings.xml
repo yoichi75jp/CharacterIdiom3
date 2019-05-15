@@ -53,7 +53,10 @@
     <string name="induce_ok">Evaluate</string>
     <string name="induce_cancel">Later</string>
 
+    <!--本番-->
     <string name="adUnitId">ca-app-pub-1485554329820885/3934827859</string>
+    <!--テスト-->
+    <!--string name="adUnitId">ca-app-pub-3940256099942544/6300978111</string-->
     <string name="adUnitInterId">ca-app-pub-1485554329820885/3147453854</string>
     <string name="adUnitTestId">ca-app-pub-3940256099942544/6300978111</string>
 </resources>

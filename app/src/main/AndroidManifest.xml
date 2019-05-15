@@ -14,6 +14,15 @@
         android:roundIcon="@mipmap/ic_characteridiom3"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+
+        <!--2019/02/05 add-->
+        <!--meta-data
+            android:name="com.google.android.gms.ads.AD_MANAGER_APP"
+            android:value="true"/-->
+        <meta-data
+            android:name="com.google.android.gms.ads.APPLICATION_ID"
+            android:value="ca-app-pub-1485554329820885~2458094657"/>
+
         <activity
             android:screenOrientation="portrait"
             android:name=".MainActivity">
@@ -21,6 +30,12 @@
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="characteridiom3" android:host="main" />
             </intent-filter>
 
         </activity>
@@ -74,7 +89,7 @@
                 <action android:name="com.android.vending.INSTALL_REFERRER" />
             </intent-filter>
         </receiver>
-        <service android:name="com.google.android.gms.analytics.CampaignTrackingService" />
+        <!--service android:name="com.google.android.gms.analytics.CampaignTrackingService" /-->
 
     </application>
 
