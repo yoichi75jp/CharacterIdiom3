@@ -16,9 +16,9 @@ import android.media.AudioManager;
 import android.media.SoundPool;
 import android.net.Uri;
 import android.os.Build;
-import android.support.v4.util.Pair;
+//import android.support.v4.util.Pair;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
+//import android.support.v7.app.AppCompatActivity;
 import android.view.Display;
 import android.view.Gravity;
 import android.view.KeyEvent;
@@ -66,7 +66,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
 
     private Map<Integer, Button> m_mapButton = new ConcurrentHashMap<>();
     private List<Integer> m_listID = new ArrayList<>();
-    private List<Pair<String,String>> m_listIdiom = new ArrayList<>();
+//    private List<Pair<String,String>> m_listIdiom = new ArrayList<>();
     private List<Map<String,String>> m_listQuestion = new ArrayList<>();
     private List<Button> m_listClickButton = new ArrayList<>();
     private List<Button> m_listAnswerButton = new ArrayList<>();
@@ -99,6 +99,20 @@ public class MainActivity extends Activity implements View.OnClickListener {
             Color.parseColor("#00E100")
     ));
 
+    private class Idiom
+    {
+        String m_idiom;
+        String m_read;
+        int m_level;
+
+        Idiom(String idiom, String read, int level)
+        {
+            m_idiom = idiom;
+            m_read = read;
+            m_level = level;
+        }
+    }
+    private List<Idiom> m_listIdiom = new ArrayList<>();
     // 効果音用
     final int SOUND_POOL_MAX = 6;
     private SoundPool m_soundPool;
@@ -133,11 +147,12 @@ public class MainActivity extends Activity implements View.OnClickListener {
         // スマートフォンの液晶のサイズを取得を開始
         // ウィンドウマネージャのインスタンス取得
         WindowManager wm = (WindowManager)getSystemService(Context.WINDOW_SERVICE);
+        if(wm == null) return;
         // ディスプレイのインスタンス生成
-        Display disp = wm.getDefaultDisplay();
+        Display display = wm.getDefaultDisplay();
         // スマートフォンの画面のサイズ
         Point point = new Point();
-        disp.getSize(point);
+        display.getSize(point);
         //int swsize = point.x;
 
         int textSize1 = 35;
@@ -227,6 +242,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
     {
         int id = view.getId();
         Button button = m_mapButton.get(id);
+        if(button == null) return;
         switch(id)
         {
             case R.id.char1:
@@ -333,7 +349,8 @@ public class MainActivity extends Activity implements View.OnClickListener {
                             button.setBackgroundResource(R.drawable.circle2);
                             button.setText(getString(R.string.look_answer));
                             Button look_answer_btn = m_mapButton.get(R.id.look_answer_btn);
-                            look_answer_btn.setEnabled(false);
+                            if(look_answer_btn != null)
+                                look_answer_btn.setEnabled(false);
 
                             int count = m_prefs.getInt(getString(R.string.count_induce), 0);
                             count++;
@@ -485,8 +502,9 @@ public class MainActivity extends Activity implements View.OnClickListener {
                     for (int i = 0; i < cursor.getCount(); i++) {
                         String idiom = (cursor.getString(0));
                         String read = (cursor.getString(1));
-                        Pair<String,String> keyValue = new Pair<>(idiom, read);
-                        m_listIdiom.add(keyValue);
+//                        Pair<String,String> keyValue = new Pair<>(idiom, read);
+//                        m_listIdiom.add(keyValue);
+                        m_listIdiom.add(new Idiom(idiom, read,0 ));
                         cursor.moveToNext();
                     }
                 }
@@ -506,8 +524,8 @@ public class MainActivity extends Activity implements View.OnClickListener {
             for(int i = 0; i < m_listIdiom.size(); i++)
             {
                 boolean isExist = false;
-                String idiom = m_listIdiom.get(i).first;
-                String read = m_listIdiom.get(i).second;
+                String idiom = m_listIdiom.get(i).m_idiom;
+                String read = m_listIdiom.get(i).m_read;
                 if(read.equals("")) continue;
                 if(m_answerdList.indexOf(idiom) >= 0) continue;  // 既に解答した熟語を省く
 
@@ -740,9 +758,9 @@ public class MainActivity extends Activity implements View.OnClickListener {
             {
                 for(int j = 0; j < m_listIdiom.size(); j++)
                 {
-                    if(m_listIdiom.get(j).first.equals(answerList.get(i)))
+                    if(m_listIdiom.get(j).m_idiom.equals(answerList.get(i)))
                     {
-                        readList.add(m_listIdiom.get(j).second);
+                        readList.add(m_listIdiom.get(j).m_read);
                         break;
                     }
                 }
